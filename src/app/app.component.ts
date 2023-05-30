@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Post } from './models/post.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { serviceResponse } from './models/serviceResponse.model';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +11,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'Facebook';
-  posts : Post[]
-  URL = "https://my-json-server.typicode.com/PaoloCarugati/facebook/posts"
-  data:Post
-  oPost : Observable<Post>
+  posts: Post[]
+  oServiceResponse: Observable<serviceResponse>;
+  serviceURL= 'https://my-json-server.typicode.com/PaoloCarugati/facebook';
 
-  constructor(public http:HttpClient){
-      this.ngOnInit()
+  constructor(public http: HttpClient){
+    this.makeRequest()
   }
-  ngOnInit(): void {
-    this.oPost = this.http.get<Post>(this.URL);
-    this.oPost.subscribe( d => {
-      this.data = d;
-    });
+  
+  makeRequest(): void {
+    this.oServiceResponse = this.http.get<serviceResponse>(this.serviceURL);
+    this.oServiceResponse.subscribe(d => {this.posts = d.data;});
   }
+
 }
+

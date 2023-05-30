@@ -7,7 +7,6 @@ import { Post } from '../models/post.model';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  @Input() posts:Post[]
+  @Input() posts:Post;
   
-  constructor(){}
 }

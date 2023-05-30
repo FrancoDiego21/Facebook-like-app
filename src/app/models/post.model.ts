@@ -10,9 +10,4 @@ export class Post{
         this.testo = testo;
         this.like = like;
     }
-    addLike(){
-        this.like ++;
-        return this.like;
-
-    }
 }

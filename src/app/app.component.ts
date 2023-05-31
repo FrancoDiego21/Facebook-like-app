@@ -11,7 +11,8 @@ import { serviceResponse } from './models/serviceResponse.model';
 })
 export class AppComponent {
   title = 'Facebook';
-  posts: Post[]
+  posts: Post[];
+  serviceResponse : serviceResponse[];
   oServiceResponse: Observable<serviceResponse>;
   serviceURL= 'https://my-json-server.typicode.com/PaoloCarugati/facebook';
 

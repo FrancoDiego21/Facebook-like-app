@@ -2,4 +2,34 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/640px-Facebook_logo_%28square%29.png" alt="Logo Facebook" class="facebook-logo">
     <p class="profilo">DF2143</p>
 </div>
-<app-post *ngFor="let post of posts" [posts]="post"></app-post>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h4>Nuovo Post</h4>
+            <div class="card text-center">
+                <div class="card-body">
+                    <div>
+                        <b><label for="autore">AUTORE:</label><br></b>
+                        <input  #autore>
+                    </div>
+                    <div>
+                        <b><label for="testo">TESTO:</label><br></b>
+                        <input class="altezzaTesto"  #testo>
+                    </div>
+                    <br>
+                    <button (click)="addPost(autore, testo)" class="bottonePubblica">
+                        Pubblica
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <h2>POSTS</h2>
+            <br>
+            <div>
+                <app-post *ngFor="let post of ordinaPost()" [posts]="post"></app-post>
+            </div>
+        </div>
+    </div>
+</div>

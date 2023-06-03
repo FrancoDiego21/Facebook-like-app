@@ -12,17 +12,20 @@ import { serviceResponse } from './models/serviceResponse.model';
 export class AppComponent {
   title = 'Facebook';
   posts: Post[];
-  serviceResponse : serviceResponse[];
+  data : serviceResponse[];
   oServiceResponse: Observable<serviceResponse>;
-  serviceURL= 'https://my-json-server.typicode.com/PaoloCarugati/facebook';
+  serviceURL= 'https://my-json-server.typicode.com/FrancoDiego21/facebook/posts';
+  
 
   constructor(public http: HttpClient){
     this.makeRequest()
+    
   }
   
   makeRequest(): void {
     this.oServiceResponse = this.http.get<serviceResponse>(this.serviceURL);
     this.oServiceResponse.subscribe(d => {this.posts = d.data;});
+    
   }
 
 }
